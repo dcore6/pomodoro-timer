@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <title>Snowpack App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="time-container">
+          <p class="time nightP"></p>
+        </div>
+
+        <div class="navigation">
+          <button class="pomodoro night">Pomodoro</button>
+          <button class="short-break night">Short break</button>
+          <button class="long-break night">Long break</button>
+        </div>
+
+        <div class="toggle-mode-container">
+          <div class="mode-nav">
+            <p class="mode-info nightP">Mode: Day</p>
+            <label class="switch">
+              <input autocomplete="off" type="checkbox">
+              <span class="slider"></span>
+            </label>
+            <img
+              class="day-time-icon"
+              src="day.svg">
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="main-wrapper">
+          <div class="stats-container">
+              <div class="stats">
+                <div class="text">
+                  <p class="percent-done nightP"></p>
+                  <p class="nightP">out of</p>
+                  <p class="nightP">100%</p>
+                </div>
+              </div>
+          </div>
+
+          <div class="clock-container">
+            <div>
+              <div id="slider">
+                  <div class="slider-wrapper">
+                    <p class="slider-minutes nightP"></p>
+                    <audio class="done" src="done.mp3"></audio>
+                    <p class="date nightP"></p>
+                    <p class="weekday nightP"></p>
+              </div>
+            </div>
+            </div>
+            <div class="timer-buttons">
+              <button class="timer-start night">START</button>
+              <button class="timer-reset night">RESET</button>
+            </div>
+          </div>
+
+          <div class="to-do-container">
+            <div class="to-do-wrapper">
+              <div class="to-do-nav">
+                <input autocomplete="off" class="title-input" type="text" placeholder="Input title of the task">
+                <button class="add-task night">
+                  <img class="plus" src="plus-day.svg">
+                  Add task
+                </button>
+              </div>
+              <ul class="tasks-list">
+
+              </ul>
+            </div>
+          </div>
+      </main>
+
+      <footer>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0" width="20%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <img class="fullscreen" src="fullscreen-day.svg" alt="">
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
