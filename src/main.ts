@@ -123,7 +123,7 @@ const checkIfTaskDone = () => {
                 tasks[index].done = "checked";
             } else {
                 tasks[index].done = "";
-            }
+            }~
             localStorage.setItem("tasks", JSON.stringify(tasks));
             calculatePercent();
         })
@@ -211,9 +211,9 @@ const getTimer = () => {
 
     const reset = () => {
         clearInterval(interval)
-        minutes = 0;
-        seconds = 0;
         cs.setAngle(0)
+        minutes = -1;
+        seconds = 0;
 
         sliderMinutes.style.fontSize = "40px"
         sliderMinutes.textContent = `Let's get to work!`;
@@ -222,7 +222,7 @@ const getTimer = () => {
 
     timerStartButton.addEventListener("click", () => {
         clearInterval(interval);
-        if (seconds === 0 && minutes === 1) {
+        if (minutes < 0) {
             sliderMinutes.style.fontSize = "40px"
             sliderMinutes.textContent = `You have to set the time!`;
 
@@ -233,11 +233,8 @@ const getTimer = () => {
     })
 
     timerResetButton.addEventListener("click", () => {
-        timerStartButton.disabled = false;
-        if (minutes === 0 && seconds === 0)
-            return;
-
         reset();
+        timerStartButton.disabled = false;
     })
 
 
@@ -265,7 +262,7 @@ const getTimer = () => {
 
     longBreakButton.addEventListener("click", () => {
         timerStartButton.disabled = false;
-        reset()
+        reset();
 
         minutes = 15;
         seconds = 0;
@@ -284,6 +281,7 @@ const getTimer = () => {
     const cs = new CircleSlider("#slider", options);
 
     cs.on("sliderMove", (angle: any) => {
+        sliderMinutes.style.fontSize = "60px";
         timerStartButton.disabled = false;
         if (angle === 0) {
             angle = 1;
